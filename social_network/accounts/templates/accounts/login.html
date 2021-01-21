@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block head_extra %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
+{% endblock head_extra %}
+
+{% block content %}
+<div class="container">
+  <div class="wrapper fadeInDowm zero-radius">
+    <div id="formContent">
+      <div class="fadeIn first">
+        <h2 class="my-5">Log In</h2>
+      </div>
+      <form method="post">
+        {% csrf_token %}
+        {{form.username}}
+        <p></p>
+        {{form.password}}
+        <div id="formFooter">
+          <a href="{% url 'accounts:password_reset'%}" class="underlineHover">Forgot Password?</a>
+        </div>
+        <button class="fadeIn fourth zero-raduis" type="submit">Log In</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
